@@ -8,5 +8,5 @@ comment2.target=void\ mover(Casa)
 comment2.text=\r\n\ Movimenta\ a\ peca\ para\ uma\ nova\ casa.\r\n\ @param\ destino\ nova\ casa\ que\ ira\ conter\ esta\ peca.\r\n
 comment3.params=
 comment3.target=int\ getTipo()
-comment3.text=\r\n\ Se\ o\ valor\ for\ par\ a\ pedra\ ser\u00E1\ da\ cor\ branca,\ caso\ contr\u00E1rio\ ser\u00E1\ preto.\r\n\ @return\ o\ tipo\ da\ peca.\r\n
+comment3.text=\r\n\ 0\ -\ Torre\ Branca\r\n\ 1\ -\ Torre\ Preta\r\n\ 2\ -\ Cavalo\ Branco\r\n\ 3\ -\ Cavalo\ Preto\r\n\ 4\ -\ Bispo\ Branco\r\n\ 5\ -\ Bispo\ Preto\r\n\ 6\ -\ Rainha\ Branca\r\n\ 7\ -\ Rainha\ Preta\r\n\ 8\ -\ Rei\ Branco\r\n\ 9\ -\ Rei\ Preto\r\n\ 10\ -\ Pe\u00E3o\ Branco\r\n\ 11\ -\ Pe\u00E3o\ Preto\r\n\ @return\ o\ tipo\ da\ peca.\r\n
 numComments=4

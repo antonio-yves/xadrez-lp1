@@ -41,7 +41,18 @@ public class Peca {
     }
 
     /**
-     * Se o valor for par a pedra será da cor branca, caso contrário será preto.
+     * 0 - Torre Branca
+     * 1 - Torre Preta
+     * 2 - Cavalo Branco
+     * 3 - Cavalo Preto
+     * 4 - Bispo Branco
+     * 5 - Bispo Preto
+     * 6 - Rainha Branca
+     * 7 - Rainha Preta
+     * 8 - Rei Branco
+     * 9 - Rei Preto
+     * 10 - Peão Branco
+     * 11 - Peão Preto
      * @return o tipo da peca.
      */
     public int getTipo() {
