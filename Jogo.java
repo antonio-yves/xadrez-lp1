@@ -131,7 +131,12 @@ public class Jogo {
         Casa origem = tabuleiro.getCasa(origemX, origemY);
         Casa destino = tabuleiro.getCasa(destinoX, destinoY);
         Peca peca = origem.getPeca();
-        peca.mover(destino);
+        if(peca.getTipo() == Peca.CAVALO_BRANCO || peca.getTipo() == Peca.CAVALO_PRETO) {
+            peca.moverCavalo(destino);
+        }
+        else {
+            peca.mover(destino);
+        }
     }
     
     /**

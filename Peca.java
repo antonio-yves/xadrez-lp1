@@ -1,4 +1,4 @@
-
+import javax.swing.*;
 /**
  * Representa uma Pe�a do jogo.
  * Possui uma casa e um tipo associado.
@@ -38,6 +38,16 @@ public class Peca {
         casa.removerPeca();
         destino.colocarPeca(this);
         casa = destino;
+    }
+    
+    public void moverCavalo(Casa destino) {
+        double dist = Math.sqrt(Math.pow(destino.getX() - casa.getX(), 2) + Math.pow(destino.getY() - casa.getY(), 2));
+        if(dist == Math.sqrt(5)) {
+            mover(destino);
+        }
+        else {
+            JOptionPane.showMessageDialog (null, "Posição inválida para o movimento do cavalo");
+        }
     }
 
     /**
