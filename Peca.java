@@ -241,14 +241,20 @@ public class Peca {
                 
                 if(pecaNaFrente == false){
                     //Lógica para capturar a peça
-                    if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
+                    if (destino.getPeca() != null){
+                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0))){
-                        mostrarMensagem();
-                        return false;
+                            peca.mover(tabuleiro.getCasa(origemX, origemY));
+                            mostrarMensagem();
+                            return false;
+                        }
+                        peca.mover(destino);
+                        return true;
                     }
                     peca.mover(destino);
-                    return true;
+                    return true;                   
                 }
+                peca.mover(tabuleiro.getCasa(origemX, origemY));
                 mostrarMensagem();
                 return false;
             } else if(destinoY < origemY){
@@ -259,14 +265,21 @@ public class Peca {
                 }
                 
                 if(pecaNaFrente == false){
-                    if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
+                    //Lógica para capturar a peça
+                    if (destino.getPeca() != null){
+                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0))){
-                        mostrarMensagem();
-                        return false;
+                            peca.mover(tabuleiro.getCasa(origemX, origemY));
+                            mostrarMensagem();
+                            return false;
+                        }
+                        peca.mover(destino);
+                        return true;
                     }
                     peca.mover(destino);
-                    return true;
+                    return true;                   
                 }
+                peca.mover(tabuleiro.getCasa(origemX, origemY));
                 mostrarMensagem();
                 return false;
             }
@@ -281,14 +294,21 @@ public class Peca {
                 }
                 
                 if(pecaNaFrente == false){
-                    if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
+                    //Lógica para capturar a peça
+                    if (destino.getPeca() != null){
+                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0))){
-                        mostrarMensagem();
-                        return false;
+                            peca.mover(tabuleiro.getCasa(origemX, origemY));
+                            mostrarMensagem();
+                            return false;
+                        }
+                        peca.mover(destino);
+                        return true;
                     }
                     peca.mover(destino);
-                    return true;
+                    return true;                   
                 }
+                peca.mover(tabuleiro.getCasa(origemX, origemY));
                 mostrarMensagem();
                 return false;                
             } else if (destinoX < origemX){
@@ -299,14 +319,21 @@ public class Peca {
                 }
                 
                 if(pecaNaFrente == false){
-                    if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
+                    //Lógica para capturar a peça
+                    if (destino.getPeca() != null){
+                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0))){
-                        mostrarMensagem();
-                        return false;
+                            peca.mover(tabuleiro.getCasa(origemX, origemY));
+                            mostrarMensagem();
+                            return false;
+                        }
+                        peca.mover(destino);
+                        return true;
                     }
                     peca.mover(destino);
-                    return true;
+                    return true;                   
                 }
+                peca.mover(tabuleiro.getCasa(origemX, origemY));
                 mostrarMensagem();
                 return false;
             }   
