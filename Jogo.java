@@ -131,8 +131,21 @@ public class Jogo {
         Casa origem = tabuleiro.getCasa(origemX, origemY);
         Casa destino = tabuleiro.getCasa(destinoX, destinoY);
         Peca peca = origem.getPeca();
-        
-        if (peca.getTipo() == Peca.TORRE_BRANCA || peca.getTipo() == Peca.TORRE_PRETA){
+        if (peca.getTipo() == Peca.REI_BRANCO || peca.getTipo() == Peca.REI_PRETO){
+            if (peca.moverRei(peca, origem, destino)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else if (peca.getTipo() == Peca.PEAO_BRANCO || peca.getTipo() == Peca.PEAO_PRETO) {
+            if (peca.moverPeao(peca, origem, destino)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else if (peca.getTipo() == Peca.TORRE_BRANCA || peca.getTipo() == Peca.TORRE_PRETA){
             if (peca.moverTorre(peca, origemX, origemY, destinoX, destinoY, tabuleiro, destino)){
                 return true;
             } else {
@@ -146,8 +159,15 @@ public class Jogo {
                 return false;
             }
         }
-        else if(peca.getTipo() == Peca.CAVALO_BRANCO || peca.getTipo() == Peca.CAVALO_PRETO) {
+        else if (peca.getTipo() == Peca.CAVALO_BRANCO || peca.getTipo() == Peca.CAVALO_PRETO) {
             if (peca.moverCavalo(destino)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else if (peca.getTipo() == Peca.RAINHA_BRANCA || peca.getTipo() == Peca.RAINHA_PRETA){
+            if (peca.moverRainha(origem, destino, peca, tabuleiro)){
                 return true;
             } else {
                 return false;

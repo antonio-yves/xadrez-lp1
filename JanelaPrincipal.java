@@ -104,7 +104,7 @@ public class JanelaPrincipal extends JFrame {
         super.setLocationRelativeTo(null);
         super.setVisible(true);
         super.pack();
-        //JOptionPane.showMessageDialog(this, "As peças brancas começam.");
+        JOptionPane.showMessageDialog(this, "As peças brancas começam.");
     }
 
     
