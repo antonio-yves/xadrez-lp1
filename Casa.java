@@ -18,6 +18,34 @@ public class Casa {
         this.peca = null;
     }
     
+        /**
+    * @return a coordenada X   
+    */
+    public int getCoordX(){
+        return this.x;
+    }
+    
+    /**
+    * @return a coordenada Y   
+    */
+    public int getCoordY(){
+        return this.y;
+    }
+    
+    /**
+     * Define um novo valor para a posição X
+     */
+    public void setCoordX(int x){
+        this.x = x;
+    }
+    
+    /**
+     * Define um novo valor para a posição Y
+     */
+    public void setCoordY(int y){
+        this.y = y;
+    }
+    
     /**
      * @param peca a Pe�a a ser posicionada nesta Casa.
      */

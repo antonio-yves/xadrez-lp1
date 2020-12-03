@@ -17,7 +17,7 @@ public class JanelaPrincipal extends JFrame {
     private boolean primeiroClique;
     private CasaGUI casaClicadaOrigem;
     private CasaGUI casaClicadaDestino;
-    private int turno = 0;
+    public int turno = 0;
     
     /**
      * Responde aos cliques realizados no tabuleiro.
@@ -28,6 +28,9 @@ public class JanelaPrincipal extends JFrame {
         if (primeiroClique) {
             if (casaClicada.possuiPeca()) {
                 casaClicadaOrigem = casaClicada;
+                casaClicadaOrigem.destacar();
+                primeiroClique = false;
+                /**
                 // verifica se a peça selecionada é branca e verifica se é o turno das brancas, se for o movimento pode ser executado
                 if (casaClicadaOrigem.getCorPeca() == 0 && turno == 0){
                     casaClicadaOrigem.destacar();
@@ -43,6 +46,7 @@ public class JanelaPrincipal extends JFrame {
                 else {
                     JOptionPane.showMessageDialog(this, "Ainda não é sua vez de jogar.");
                 }
+                */
                 
             }
             else {
@@ -56,7 +60,7 @@ public class JanelaPrincipal extends JFrame {
                     casaClicadaDestino.getPosicaoX(), casaClicadaDestino.getPosicaoY());
             casaClicadaOrigem.atenuar();
             primeiroClique = true;
-            mudarTurno();
+            //mudarTurno();
             atualizar();
         }
     }
@@ -69,8 +73,7 @@ public class JanelaPrincipal extends JFrame {
     public void mudarTurno(){
         if (turno == 0){
             turno = 1;
-        } 
-        else {
+        } else {
             turno = 0;
         }
     }
@@ -105,7 +108,7 @@ public class JanelaPrincipal extends JFrame {
         super.setLocationRelativeTo(null);
         super.setVisible(true);
         super.pack();
-        JOptionPane.showMessageDialog(this, "As peças brancas começam.");
+        //JOptionPane.showMessageDialog(this, "As peças brancas começam.");
     }
 
     

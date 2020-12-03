@@ -131,7 +131,69 @@ public class Jogo {
         Casa origem = tabuleiro.getCasa(origemX, origemY);
         Casa destino = tabuleiro.getCasa(destinoX, destinoY);
         Peca peca = origem.getPeca();
-        if(peca.getTipo() == Peca.CAVALO_BRANCO || peca.getTipo() == Peca.CAVALO_PRETO) {
+        int tipoPeca = peca.getTipo();
+        boolean pecaNaFrente = false;
+        
+        if (peca.getTipo() == Peca.TORRE_BRANCA || peca.getTipo() == Peca.TORRE_PRETA){
+            if((destinoX == origemX) && (destinoY != origemY)) { 
+                if(destinoY > origemY){
+                    for(int i = origemY + 1; i < destinoY; i++){
+                        if(tabuleiro.getCasa(origemX, i).possuiPeca() == true){
+                            pecaNaFrente = true;
+                        }
+
+                    }
+                    
+                    if(pecaNaFrente == false){
+                        //Lógica para capturar a peça
+                        peca.mover(destino);
+                        
+                    }
+                    
+                } else if(destinoY < origemY){
+                    for(int i = origemY - 1; i > destinoY; i--){
+                        if(tabuleiro.getCasa(origemX, i).possuiPeca() == true){
+                            pecaNaFrente = true;
+                        }
+                    }
+                    
+                    if(pecaNaFrente == false){
+                        peca.mover(destino);
+                    }
+                }
+                
+            } else if ((destinoX != origemX) && (destinoY == origemY)){ 
+                if(destinoX > origemX){
+                    for(int i = origemX + 1; i < destinoX; i++){
+                        if(tabuleiro.getCasa(i, origemY).possuiPeca() == true) {
+                            pecaNaFrente = true;
+                        }
+    
+                    }
+                    
+                    if(pecaNaFrente == false){
+                        peca.mover(destino);
+                    }
+                    
+                } else if (destinoX < origemX){
+                    for(int i = origemX - 1; i > destinoX; i--){
+                        if(tabuleiro.getCasa(i, origemY).possuiPeca() == true) {
+                            pecaNaFrente = true;
+                        }
+                    }
+                    
+                    if(pecaNaFrente == false){
+                        peca.mover(destino);
+                    }
+                
+                }
+                    
+            }
+        }
+        else if (peca.getTipo() == Peca.BISPO_BRANCO || peca.getTipo() == Peca.BISPO_PRETO){
+            peca.moverBispo(origem, destino, tabuleiro);
+        }
+        else if(peca.getTipo() == Peca.CAVALO_BRANCO || peca.getTipo() == Peca.CAVALO_PRETO) {
             peca.moverCavalo(destino);
         }
         else {

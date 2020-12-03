@@ -49,6 +49,131 @@ public class Peca {
             JOptionPane.showMessageDialog (null, "Posição inválida para o movimento do cavalo");
         }
     }
+    
+    public void moverBispo(Casa origem, Casa destino, Tabuleiro tabuleiro){
+        int deslocamentoX = destino.getCoordX() - origem.getCoordX();
+        int deslocamentoY = destino.getCoordY() - origem.getCoordY();
+        if (deslocamentoX <= 0 && deslocamentoY >= 0){
+            if ((deslocamentoX * -1) == deslocamentoY){
+                int temPeca = 0;
+                for (int x = 0; x < deslocamentoY;){
+                    x++;
+                    Casa casaAux = tabuleiro.getCasa(origem.getCoordX() - x, origem.getCoordY() + x);
+                    if (casaAux.getPeca() != null){
+                        if (casaAux == destino){
+                            if (((casaAux.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
+                                System.out.println("Peça branca captura peça preta");
+                                mover(destino);
+                            } else if (((casaAux.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
+                                System.out.println("Peça preta captura peça branca");
+                                mover(destino);
+                            }
+                            else {
+                                mover(origem);
+                            }
+                        }
+                        else {
+                            temPeca++;
+                            break;
+                        }
+                    }
+                }
+                if (temPeca != 0){
+                    mover(origem);
+                } else {
+                    mover(destino);
+                }
+            }
+        } else if (deslocamentoX >= 0 && deslocamentoY <=0){
+            if (deslocamentoX == (deslocamentoY * -1)){
+                int temPeca = 0;
+                for (int x = 0; x < deslocamentoX;){
+                    x++;
+                    Casa casaAux = tabuleiro.getCasa(origem.getCoordX() + x, origem.getCoordY() - x);
+                    if (casaAux.getPeca() != null){
+                        if (casaAux == destino){
+                            if (((casaAux.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) == 0)) {
+                                mover(destino);
+                            } else if (((casaAux.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) != 0)) {
+                                mover(destino);
+                            }
+                            else {
+                                mover(origem);
+                            }
+                        }
+                        else {
+                            temPeca++;
+                            break;
+                        }
+                    }
+                }
+                if (temPeca != 0){
+                    mover(origem);
+                } else {
+                    mover(destino);
+                }
+            }
+        } else if (deslocamentoX >= 0 && deslocamentoY >= 0){
+            if (deslocamentoX == deslocamentoY){
+                int temPeca = 0;
+                for (int x = 0; x < deslocamentoY;){
+                    x++;
+                    Casa casaAux = tabuleiro.getCasa(origem.getCoordX() + x, origem.getCoordY() + x);
+                    if (casaAux.getPeca() != null){
+                        if (casaAux == destino){
+                            if (((casaAux.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) == 0)) {
+                                mover(destino);
+                            } else if (((casaAux.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) != 0)) {
+                                mover(destino);
+                            }
+                            else {
+                                mover(origem);
+                            }
+                        }
+                        else {
+                            temPeca++;
+                            break;
+                        }
+                    }
+                }
+                if (temPeca != 0){
+                    mover(origem);
+                } else {
+                    mover(destino);
+                }
+            }
+        } else if (deslocamentoX <= 0 && deslocamentoY <= 0){
+            if (deslocamentoX == deslocamentoY){
+                int temPeca = 0;
+                int yAux = deslocamentoY * -1;
+                for (int x = 0; x < yAux;){
+                    x++;
+                    Casa casaAux = tabuleiro.getCasa(origem.getCoordX() - x, origem.getCoordY() - x);
+                    if (casaAux.getPeca() != null){
+                        if (casaAux == destino){
+                            if (((casaAux.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) == 0)) {
+                                mover(destino);
+                            } else if (((casaAux.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) != 0)) {
+                                mover(destino);
+                            }
+                            else {
+                                mover(origem);
+                            }
+                        }
+                        else {
+                            temPeca++;
+                            break;
+                        }
+                    }
+                }
+                if (temPeca != 0){
+                    mover(origem);
+                } else {
+                    mover(destino);
+                }
+            }
+        }
+    }
 
     /**
      * 0 - Torre Branca
