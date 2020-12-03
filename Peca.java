@@ -40,20 +40,95 @@ public class Peca {
         casa = destino;
     }
     
-    public void moverCavalo(Casa destino) {
+    /**
+     * Realiza o movimento da Torre
+     */
+    public boolean moverTorre(Peca peca, int origemX, int origemY, int destinoX, int destinoY, Tabuleiro tabuleiro, Casa destino){
+        int tipoPeca = peca.getTipo();
+        boolean pecaNaFrente = false;
+        if((destinoX == origemX) && (destinoY != origemY)) { 
+            if(destinoY > origemY){
+                for(int i = origemY + 1; i < destinoY; i++){
+                    if(tabuleiro.getCasa(origemX, i).possuiPeca() == true){
+                        pecaNaFrente = true;
+                    }
+                }
+                
+                if(pecaNaFrente == false){
+                    //Lógica para capturar a peça
+                    peca.mover(destino);
+                    return true;
+                }
+                return false;
+            } else if(destinoY < origemY){
+                for(int i = origemY - 1; i > destinoY; i--){
+                    if(tabuleiro.getCasa(origemX, i).possuiPeca() == true){
+                        pecaNaFrente = true;
+                    }
+                }
+                
+                if(pecaNaFrente == false){
+                    peca.mover(destino);
+                    return true;
+                }
+                return false;
+            }
+            
+        } else if ((destinoX != origemX) && (destinoY == origemY)){ 
+            if(destinoX > origemX){
+                for(int i = origemX + 1; i < destinoX; i++){
+                    if(tabuleiro.getCasa(i, origemY).possuiPeca() == true) {
+                        pecaNaFrente = true;
+                    }
+
+                }
+                
+                if(pecaNaFrente == false){
+                    peca.mover(destino);
+                    return true;
+                }
+                return false;                
+            } else if (destinoX < origemX){
+                for(int i = origemX - 1; i > destinoX; i--){
+                    if(tabuleiro.getCasa(i, origemY).possuiPeca() == true) {
+                        pecaNaFrente = true;
+                    }
+                }
+                
+                if(pecaNaFrente == false){
+                    peca.mover(destino);
+                    return true;
+                }
+                return false;
+            }   
+        }
+        return false;
+    }
+    
+    /**
+     * Realiza o movimento do Cavalo
+     */
+    public boolean moverCavalo(Casa destino) {
         double dist = Math.sqrt(Math.pow(destino.getX() - casa.getX(), 2) + Math.pow(destino.getY() - casa.getY(), 2));
         if(dist == Math.sqrt(5)) {
             mover(destino);
+            return true;
         }
         else {
             JOptionPane.showMessageDialog (null, "Posição inválida para o movimento do cavalo");
+            return false;
         }
     }
     
-    public void moverBispo(Casa origem, Casa destino, Tabuleiro tabuleiro){
+    /**
+     * Realiza o movimentoo do Bispo
+     */
+    public boolean moverBispo(Casa origem, Casa destino, Tabuleiro tabuleiro){
         int deslocamentoX = destino.getCoordX() - origem.getCoordX();
         int deslocamentoY = destino.getCoordY() - origem.getCoordY();
-        if (deslocamentoX <= 0 && deslocamentoY >= 0){
+        if (origem == destino){
+            return false;
+        } else if (deslocamentoX <= 0 && deslocamentoY >= 0){
             if ((deslocamentoX * -1) == deslocamentoY){
                 int temPeca = 0;
                 for (int x = 0; x < deslocamentoY;){
@@ -64,12 +139,15 @@ public class Peca {
                             if (((casaAux.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 System.out.println("Peça branca captura peça preta");
                                 mover(destino);
+                                return true;
                             } else if (((casaAux.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 System.out.println("Peça preta captura peça branca");
                                 mover(destino);
+                                return true;
                             }
                             else {
                                 mover(origem);
+                                return false;
                             }
                         }
                         else {
@@ -80,8 +158,10 @@ public class Peca {
                 }
                 if (temPeca != 0){
                     mover(origem);
+                    return false;
                 } else {
                     mover(destino);
+                    return true;
                 }
             }
         } else if (deslocamentoX >= 0 && deslocamentoY <=0){
@@ -94,11 +174,14 @@ public class Peca {
                         if (casaAux == destino){
                             if (((casaAux.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) == 0)) {
                                 mover(destino);
+                                return true;
                             } else if (((casaAux.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) != 0)) {
                                 mover(destino);
+                                return true;
                             }
                             else {
                                 mover(origem);
+                                return false;
                             }
                         }
                         else {
@@ -109,8 +192,10 @@ public class Peca {
                 }
                 if (temPeca != 0){
                     mover(origem);
+                    return false;
                 } else {
                     mover(destino);
+                    return true;
                 }
             }
         } else if (deslocamentoX >= 0 && deslocamentoY >= 0){
@@ -123,11 +208,14 @@ public class Peca {
                         if (casaAux == destino){
                             if (((casaAux.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) == 0)) {
                                 mover(destino);
+                                return true;
                             } else if (((casaAux.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) != 0)) {
                                 mover(destino);
+                                return true;
                             }
                             else {
                                 mover(origem);
+                                return false;
                             }
                         }
                         else {
@@ -138,8 +226,10 @@ public class Peca {
                 }
                 if (temPeca != 0){
                     mover(origem);
+                    return false;
                 } else {
                     mover(destino);
+                    return true;
                 }
             }
         } else if (deslocamentoX <= 0 && deslocamentoY <= 0){
@@ -153,11 +243,14 @@ public class Peca {
                         if (casaAux == destino){
                             if (((casaAux.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) == 0)) {
                                 mover(destino);
+                                return true;
                             } else if (((casaAux.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) != 0)) {
                                 mover(destino);
+                                return true;
                             }
                             else {
                                 mover(origem);
+                                return false;
                             }
                         }
                         else {
@@ -168,11 +261,14 @@ public class Peca {
                 }
                 if (temPeca != 0){
                     mover(origem);
+                    return false;
                 } else {
                     mover(destino);
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     /**

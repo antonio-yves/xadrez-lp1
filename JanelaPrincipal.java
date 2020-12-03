@@ -28,9 +28,6 @@ public class JanelaPrincipal extends JFrame {
         if (primeiroClique) {
             if (casaClicada.possuiPeca()) {
                 casaClicadaOrigem = casaClicada;
-                casaClicadaOrigem.destacar();
-                primeiroClique = false;
-                /**
                 // verifica se a peça selecionada é branca e verifica se é o turno das brancas, se for o movimento pode ser executado
                 if (casaClicadaOrigem.getCorPeca() == 0 && turno == 0){
                     casaClicadaOrigem.destacar();
@@ -45,9 +42,7 @@ public class JanelaPrincipal extends JFrame {
                 // for a vez das pretas e o jogador escolher uma peça branca
                 else {
                     JOptionPane.showMessageDialog(this, "Ainda não é sua vez de jogar.");
-                }
-                */
-                
+                }                
             }
             else {
                 // clicou em uma posi�?o inv�lida, ent?o n?o faz nada.
@@ -56,11 +51,12 @@ public class JanelaPrincipal extends JFrame {
         }
         else {
             casaClicadaDestino = casaClicada;
-            jogo.moverPeca(casaClicadaOrigem.getPosicaoX(), casaClicadaOrigem.getPosicaoY(),
-                    casaClicadaDestino.getPosicaoX(), casaClicadaDestino.getPosicaoY());
+            if (jogo.moverPeca(casaClicadaOrigem.getPosicaoX(), casaClicadaOrigem.getPosicaoY(),
+                    casaClicadaDestino.getPosicaoX(), casaClicadaDestino.getPosicaoY())){
+                mudarTurno();
+            }
             casaClicadaOrigem.atenuar();
             primeiroClique = true;
-            //mudarTurno();
             atualizar();
         }
     }
