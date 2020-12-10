@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Rainha
+comment0.text=\r\n\ Escreva\ a\ descri\u00E7\u00E3o\ da\ classe\ Rainha\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (n\u00FAmero\ de\ vers\u00E3o\ ou\ data)\r\n
+comment1.params=casa\ tipo
+comment1.target=Rainha(Casa,\ int)
+comment1.text=\r\n\ Construtor\ para\ objetos\ da\ classe\ Rainha\r\n
+comment2.params=origem\ destino\ peca\ tabuleiro
+comment2.target=boolean\ mover(Casa,\ Casa,\ Peca,\ Tabuleiro)
+comment2.text=\r\n\ Realiza\ o\ movimento\ da\ Rainha\r\n
+comment3.params=peca\ origemX\ origemY\ destinoX\ destinoY\ tabuleiro\ destino
+comment3.target=boolean\ moverCimaOuLado(Peca,\ int,\ int,\ int,\ int,\ Tabuleiro,\ Casa)
+comment3.text=\r\n\ Realiza\ o\ movimento\ da\ Rainha\r\n\ Na\ horizontal\ e\ na\ vertical\r\n
+comment4.params=origem\ destino\ tabuleiro
+comment4.target=boolean\ moverDiagonal(Casa,\ Casa,\ Tabuleiro)
+comment4.text=\r\n\ Realiza\ o\ movimentoo\ da\ Rainha\r\n\ Na\ diagonal\r\n
+numComments=5

@@ -33,16 +33,16 @@ public class Jogo {
         Peca pecaCavaloBranco2 = new Peca(casaCavaloBranco2, Peca.CAVALO_BRANCO);
         
         Casa casaBispoBranco1 = tabuleiro.getCasa(2, 0);
-        Peca pecaBispoBranco1 = new Peca(casaBispoBranco1, Peca.BISPO_BRANCO);
+        Bispo pecaBispoBranco1 = new Bispo(casaBispoBranco1, Bispo.BISPO_BRANCO);
         
         Casa casaBispoBranco2 = tabuleiro.getCasa(5, 0);
-        Peca pecaBispoBranco2 = new Peca(casaBispoBranco2, Peca.BISPO_BRANCO);
+        Bispo pecaBispoBranco2 = new Bispo(casaBispoBranco2, Bispo.BISPO_BRANCO);
         
         Casa casaRainhaBranca = tabuleiro.getCasa(3, 0);
-        Peca pecaRainhaBranca = new Peca(casaRainhaBranca, Peca.RAINHA_BRANCA);
+        Rainha pecaRainhaBranca = new Rainha(casaRainhaBranca, Rainha.RAINHA_BRANCA);
         
         Casa casaReiBranco = tabuleiro.getCasa(4, 0);
-        Peca pecaReiBranco = new Peca(casaReiBranco, Peca.REI_BRANCO);
+        Rei pecaReiBranco = new Rei(casaReiBranco, Rei.REI_BRANCO);
         
         Casa casaPeaoBranco1 = tabuleiro.getCasa(0, 1);
         Peca pecaPeaoBranco1 = new Peca(casaPeaoBranco1, Peca.PEAO_BRANCO);
@@ -82,16 +82,16 @@ public class Jogo {
         Peca pecaCavaloPreto2 = new Peca(casaCavaloPreto2, Peca.CAVALO_PRETO);
         
         Casa casaBispoPreto1 = tabuleiro.getCasa(2, 7);
-        Peca pecaBispoPreto1 = new Peca(casaBispoPreto1, Peca.BISPO_PRETO);
+        Bispo pecaBispoPreto1 = new Bispo(casaBispoPreto1, Bispo.BISPO_PRETO);
         
         Casa casaBispoPreto2 = tabuleiro.getCasa(5, 7);
-        Peca pecaBispoPreto2 = new Peca(casaBispoPreto2, Peca.BISPO_PRETO);
+        Bispo pecaBispoPreto2 = new Bispo(casaBispoPreto2, Bispo.BISPO_PRETO);
         
         Casa casaRainhaPreta = tabuleiro.getCasa(3, 7);
-        Peca pecaRainhaPreta = new Peca(casaRainhaPreta, Peca.RAINHA_PRETA);
+        Rainha pecaRainhaPreta = new Rainha(casaRainhaPreta, Rainha.RAINHA_PRETA);
         
         Casa casaReiPreto = tabuleiro.getCasa(4, 7);
-        Peca pecaReiPreto = new Peca(casaReiPreto, Peca.REI_PRETO);
+        Rei pecaReiPreto = new Rei(casaReiPreto, Peca.REI_PRETO);
         
         Casa casaPeaoPreto1 = tabuleiro.getCasa(0, 6);
         Peca pecaPeaoPreto1 = new Peca(casaPeaoPreto1, Peca.PEAO_PRETO);
@@ -132,7 +132,8 @@ public class Jogo {
         Casa destino = tabuleiro.getCasa(destinoX, destinoY);
         Peca peca = origem.getPeca();
         if (peca.getTipo() == Peca.REI_BRANCO || peca.getTipo() == Peca.REI_PRETO){
-            if (peca.moverRei(peca, origem, destino)){
+            Rei rei = new Rei(origem, peca.getTipo());
+            if (rei.mover(peca, origem, destino)){
                 return true;
             } else {
                 return false;
@@ -153,7 +154,8 @@ public class Jogo {
             }
         }
         else if (peca.getTipo() == Peca.BISPO_BRANCO || peca.getTipo() == Peca.BISPO_PRETO){
-            if (peca.moverBispo(origem, destino, tabuleiro)){
+            Bispo bispo = new Bispo(origem, peca.getTipo());
+            if (bispo.mover(origem, destino, tabuleiro)){
                 return true;
             } else {
                 return false;
@@ -167,7 +169,8 @@ public class Jogo {
             }
         }
         else if (peca.getTipo() == Peca.RAINHA_BRANCA || peca.getTipo() == Peca.RAINHA_PRETA){
-            if (peca.moverRainha(origem, destino, peca, tabuleiro)){
+            Rainha rainha = new Rainha(origem, peca.getTipo());
+            if (rainha.mover(origem, destino, peca, tabuleiro)){
                 return true;
             } else {
                 return false;
