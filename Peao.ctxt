@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Peao
+comment0.text=\r\n\ Escreva\ a\ descri\u00E7\u00E3o\ da\ classe\ Peao\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (n\u00FAmero\ de\ vers\u00E3o\ ou\ data)\r\n
+comment1.params=casa\ tipo
+comment1.target=Peao(Casa,\ int)
+comment2.params=peca\ deslocamentoY\ origem\ destino
+comment2.target=boolean\ deslocamentoPeao(Peca,\ int,\ Casa,\ Casa)
+comment2.text=\r\n\ Verifica\ o\ deslocamento\ do\ pe\u00E3o\ na\ vertical\r\n
+comment3.params=origem\ destino\ deslocamentoX\ deslocamentoY
+comment3.target=boolean\ capturaPeao(Casa,\ Casa,\ int,\ int)
+comment3.text=\r\n\ Faz\ com\ que\ o\ Pe\u00E3o\ capture\ uma\ pe\u00E7a\r\n
+comment4.params=peca\ origem\ destino
+comment4.target=boolean\ moverPeao(Peca,\ Casa,\ Casa)
+comment4.text=\r\n\ Realiza\ do\ movimento\ do\ Pe\u00E3o\r\n
+numComments=5
