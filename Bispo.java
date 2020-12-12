@@ -19,7 +19,7 @@ public class Bispo extends Peca
     /**
      * Realiza o movimentoo do Bispo
      */
-    public boolean mover(Casa origem, Casa destino, Tabuleiro tabuleiro){
+    public boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro){
         int deslocamentoX = destino.getCoordX() - origem.getCoordX();
         int deslocamentoY = destino.getCoordY() - origem.getCoordY();
         if (origem == destino){

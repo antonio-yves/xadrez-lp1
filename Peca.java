@@ -6,7 +6,7 @@ import javax.swing.*;
  * @author Alan Moraes &lt;alan@ci.ufpb.br&gt;
  * @author Leonardo Villeth &lt;lvilleth@cc.ci.ufpb.br&gt;
  */
-public class Peca {
+public abstract class Peca {
 
     public static final int TORRE_BRANCA = 0;
     public static final int TORRE_PRETA = 1;
@@ -22,8 +22,7 @@ public class Peca {
     public static final int PEAO_PRETO = 11;
 
     protected Casa casa;
-    private int tipo;
-    private boolean casaInicial = true;
+    private int tipo;    
 
     public Peca(Casa casa, int tipo) {
         this.casa = casa;
@@ -40,24 +39,8 @@ public class Peca {
         destino.colocarPeca(this);
         casa = destino;
     }
-    
-    /**
-     * @return o valor da Casa Inicial
-     * true - A peça ainda está na sua casa inicial
-     * false - A peça não está na sua casa inicial
-     * Esse metodo auxilia no movimento do peão
-     */
-    public boolean getCasaInicial(){
-        return this.casaInicial;
-    }
-    
-    /**
-     * Define o valor da Casa Inicial para false,
-     * assim podemos saber que a peça se moveu no tabuleiro.
-     */
-    public void setCasaInicial(){
-        this.casaInicial = false;
-    }
+
+    protected abstract boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro);  
     
     public void mostrarMensagem(){
         JOptionPane.showMessageDialog (null, "Posição inválida para a peça selecionada!");

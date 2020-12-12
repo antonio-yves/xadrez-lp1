@@ -14,7 +14,7 @@ public class Cavalo extends Peca
     /**
      * Realiza o movimento do Cavalo
      */
-    public boolean moverCavalo(Casa destino) {
+    public boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro) {
         double dist = Math.sqrt(Math.pow(destino.getX() - casa.getX(), 2) + Math.pow(destino.getY() - casa.getY(), 2));
         if (destino.getPeca() != null){
             if (((getTipo() % 2) == 0) && ((destino.getPeca().getTipo() % 2) == 0)){

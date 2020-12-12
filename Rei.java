@@ -18,15 +18,15 @@ public class Rei extends Peca
     /**
      * Realiza o movimento do Rei
      */
-    public boolean mover(Peca peca, Casa origem, Casa destino){
+    public boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro) {
         int deslocamentoX = destino.getCoordX() - origem.getCoordX();
         int deslocamentoY = destino.getCoordY() - origem.getCoordY();
         if (destino.getPeca() != null){
-            if (((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)){
+            if (((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)){
                 mover(origem);
                 mostrarMensagem();
                 return false;
-            } else if (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0)){
+            } else if (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0)){
                 mover(origem);
                 mostrarMensagem();
                 return false;

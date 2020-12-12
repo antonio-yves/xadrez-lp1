@@ -7,6 +7,8 @@
  */
 public class Peao extends Peca
 {
+    private boolean casaInicial = true;
+
     public Peao(Casa casa, int tipo) {
         super(casa, tipo);
     }
@@ -14,13 +16,13 @@ public class Peao extends Peca
     /**
      * Verifica o deslocamento do peão na vertical
      */
-    public boolean deslocamentoPeao(Peca peca, int deslocamentoY, Casa origem, Casa destino){
-        if (peca.getTipo() == Peca.PEAO_BRANCO && deslocamentoY > 0){
+    public boolean deslocamentoPeao(int deslocamentoY, Casa origem, Casa destino){
+        if (getTipo() == Peca.PEAO_BRANCO && deslocamentoY > 0){
             mover(destino);
             setCasaInicial();
             return true;
         } 
-        else if (peca.getTipo() == Peca.PEAO_PRETO && deslocamentoY < 0){
+        else if (getTipo() == Peca.PEAO_PRETO && deslocamentoY < 0){
             mover(destino);
             setCasaInicial();
             return true;
@@ -74,13 +76,13 @@ public class Peao extends Peca
     /**
      * Realiza do movimento do Peão
      */
-    public boolean moverPeao(Peca peca, Casa origem, Casa destino){
+    public boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro) {
         int deslocamentoX = destino.getCoordX() - origem.getCoordX();
         int deslocamentoY = destino.getCoordY() - origem.getCoordY();
-        if (peca.getCasaInicial()){
+        if (getCasaInicial()){
             if ((deslocamentoX == 0) && (Math.abs(deslocamentoY) == 2)){
                 if (destino.getPeca() == null) {
-                    return deslocamentoPeao(peca, deslocamentoY, origem, destino);
+                    return deslocamentoPeao(deslocamentoY, origem, destino);
                 }
                 else {
                     mostrarMensagem();
@@ -88,7 +90,7 @@ public class Peao extends Peca
                 }
             } else if ((deslocamentoX == 0) && (Math.abs(deslocamentoY) == 1)){
                 if (destino.getPeca() == null) {
-                    return deslocamentoPeao(peca, deslocamentoY, origem, destino);
+                    return deslocamentoPeao(deslocamentoY, origem, destino);
                 }
                 else {
                     mostrarMensagem();
@@ -100,7 +102,7 @@ public class Peao extends Peca
         } else {
             if ((deslocamentoX == 0) && (Math.abs(deslocamentoY) == 1)){
                 if (destino.getPeca() == null) {
-                    return deslocamentoPeao(peca, deslocamentoY, origem, destino);
+                    return deslocamentoPeao(deslocamentoY, origem, destino);
                 }
             }
             else if ((Math.abs(deslocamentoX) == 1) && (Math.abs(deslocamentoY) == 1)){
@@ -112,5 +114,23 @@ public class Peao extends Peca
         }
         mostrarMensagem();
         return false;
+    }
+
+    /**
+     * @return o valor da Casa Inicial
+     * true - A peça ainda está na sua casa inicial
+     * false - A peça não está na sua casa inicial
+     * Esse metodo auxilia no movimento do peão
+     */
+    public boolean getCasaInicial(){
+        return this.casaInicial;
+    }
+    
+    /**
+     * Define o valor da Casa Inicial para false,
+     * assim podemos saber que a peça se moveu no tabuleiro.
+     */
+    public void setCasaInicial(){
+        this.casaInicial = false;
     }
 }

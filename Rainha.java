@@ -18,12 +18,12 @@ public class Rainha extends Peca
     /**
      * Realiza o movimento da Rainha
      */
-    public boolean mover(Casa origem, Casa destino, Peca peca, Tabuleiro tabuleiro){
+    public boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro){
         if (origem == destino){
             mostrarMensagem();
             return false;
         } else if ((origem.getCoordX() == destino.getCoordX()) || (origem.getCoordY() == destino.getCoordY())){
-            if (moverCimaOuLado(peca, origem.getCoordX(), origem.getCoordY(), destino.getCoordX(), destino.getCoordY(), tabuleiro, destino)){
+            if (moverCimaOuLado(origem, destino, tabuleiro)){
                 return true;
             } else {
                 return false;
@@ -41,14 +41,14 @@ public class Rainha extends Peca
      * Realiza o movimento da Rainha
      * Na horizontal e na vertical
      */
-    public boolean moverCimaOuLado(Peca peca, int origemX, int origemY, int destinoX, int destinoY, Tabuleiro tabuleiro, Casa destino){
-        int tipoPeca = peca.getTipo();
+    public boolean moverCimaOuLado(Casa origem, Casa destino, Tabuleiro tabuleiro){
+        int tipoPeca = getTipo();
         boolean pecaNaFrente = false;
         
-        if((destinoX == origemX) && (destinoY != origemY)) {
-            if(destinoY > origemY){
-                for(int i = origemY + 1; i < destinoY; i++){
-                    if(tabuleiro.getCasa(origemX, i).possuiPeca() == true){
+        if((destino.getCoordX() == origem.getCoordX()) && (destino.getCoordY() != origem.getCoordY())) {
+            if(destino.getCoordY() > origem.getCoordY()){
+                for(int i = origem.getCoordY() + 1; i < destino.getCoordY(); i++){
+                    if(tabuleiro.getCasa(origem.getCoordX(), i).possuiPeca() == true){
                         pecaNaFrente = true;
                     }
                 }
@@ -56,24 +56,24 @@ public class Rainha extends Peca
                 if(pecaNaFrente == false){
                     //Lógica para capturar a peça
                     if (destino.getPeca() != null){
-                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
-                        (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0))){
-                            peca.mover(tabuleiro.getCasa(origemX, origemY));
+                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
+                        (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
+                            mover(origem);
                             mostrarMensagem();
                             return false;
                         }
-                        peca.mover(destino);
+                        mover(destino);
                         return true;
                     }
-                    peca.mover(destino);
+                    mover(destino);
                     return true;                   
                 }
-                peca.mover(tabuleiro.getCasa(origemX, origemY));
+                mover(origem);
                 mostrarMensagem();
                 return false;
-            } else if(destinoY < origemY){
-                for(int i = origemY - 1; i > destinoY; i--){
-                    if(tabuleiro.getCasa(origemX, i).possuiPeca() == true){
+            } else if(destino.getCoordY() < origem.getCoordY()){
+                for(int i = origem.getCoordY() - 1; i > destino.getCoordY(); i--){
+                    if(tabuleiro.getCasa(origem.getCoordX(), i).possuiPeca() == true){
                         pecaNaFrente = true;
                     }
                 }
@@ -81,27 +81,27 @@ public class Rainha extends Peca
                 if(pecaNaFrente == false){
                     //Lógica para capturar a peça
                     if (destino.getPeca() != null){
-                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
-                        (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0))){
-                            peca.mover(tabuleiro.getCasa(origemX, origemY));
+                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
+                        (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
+                            mover(origem);
                             mostrarMensagem();
                             return false;
                         }
-                        peca.mover(destino);
+                        mover(destino);
                         return true;
                     }
-                    peca.mover(destino);
+                    mover(destino);
                     return true;                   
                 }
-                peca.mover(tabuleiro.getCasa(origemX, origemY));
+                mover(origem);
                 mostrarMensagem();
                 return false;
             }
             
-        } else if ((destinoX != origemX) && (destinoY == origemY)){ 
-            if(destinoX > origemX){
-                for(int i = origemX + 1; i < destinoX; i++){
-                    if(tabuleiro.getCasa(i, origemY).possuiPeca() == true) {
+        } else if ((destino.getCoordX() != origem.getCoordX()) && (destino.getCoordY() == origem.getCoordY())){ 
+            if(destino.getCoordX() > origem.getCoordX()){
+                for(int i = origem.getCoordX() + 1; i < destino.getCoordX(); i++){
+                    if(tabuleiro.getCasa(i, origem.getCoordY()).possuiPeca() == true) {
                         pecaNaFrente = true;
                     }
 
@@ -110,24 +110,24 @@ public class Rainha extends Peca
                 if(pecaNaFrente == false){
                     //Lógica para capturar a peça
                     if (destino.getPeca() != null){
-                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
-                        (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0))){
-                            peca.mover(tabuleiro.getCasa(origemX, origemY));
+                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
+                        (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
+                            mover(origem);
                             mostrarMensagem();
                             return false;
                         }
-                        peca.mover(destino);
+                        mover(destino);
                         return true;
                     }
-                    peca.mover(destino);
+                    mover(destino);
                     return true;                   
                 }
-                peca.mover(tabuleiro.getCasa(origemX, origemY));
+                mover(origem);
                 mostrarMensagem();
                 return false;                
-            } else if (destinoX < origemX){
-                for(int i = origemX - 1; i > destinoX; i--){
-                    if(tabuleiro.getCasa(i, origemY).possuiPeca() == true) {
+            } else if (destino.getCoordX() < origem.getCoordX()){
+                for(int i = origem.getCoordX() - 1; i > destino.getCoordX(); i--){
+                    if(tabuleiro.getCasa(i, origem.getCoordY()).possuiPeca() == true) {
                         pecaNaFrente = true;
                     }
                 }
@@ -135,19 +135,19 @@ public class Rainha extends Peca
                 if(pecaNaFrente == false){
                     //Lógica para capturar a peça
                     if (destino.getPeca() != null){
-                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((peca.getTipo() % 2) == 0)) || 
-                        (((destino.getPeca().getTipo() % 2) != 0) && ((peca.getTipo() % 2) != 0))){
-                            peca.mover(tabuleiro.getCasa(origemX, origemY));
+                        if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
+                        (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
+                            mover(origem);
                             mostrarMensagem();
                             return false;
                         }
-                        peca.mover(destino);
+                        mover(destino);
                         return true;
                     }
-                    peca.mover(destino);
+                    mover(destino);
                     return true;                   
                 }
-                peca.mover(tabuleiro.getCasa(origemX, origemY));
+                mover(origem);
                 mostrarMensagem();
                 return false;
             }   

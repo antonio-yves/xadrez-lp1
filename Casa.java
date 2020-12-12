@@ -7,7 +7,7 @@
  * @author Leonardo Villeth &lt;lvilleth@cc.ci.ufpb.br&gt;
  */
 public class Casa {
-
+    
     private int x;
     private int y;
     private Peca peca;
