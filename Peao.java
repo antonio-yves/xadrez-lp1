@@ -29,7 +29,6 @@ public class Peao extends Peca
         }
         else {
             mover(origem);
-            mostrarMensagem();
             return false;
         } 
     }
@@ -41,11 +40,9 @@ public class Peao extends Peca
         if (destino.getPeca() != null){
             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)){
                 mover(origem);
-                mostrarMensagem();
                 return false;
             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)){
                 mover(origem);
-                mostrarMensagem();
                 return false;
             } else {
                 if ((origem.getPeca().getTipo() == Peca.PEAO_BRANCO) && (deslocamentoX > 0) && (deslocamentoY > 0)){
@@ -62,13 +59,11 @@ public class Peao extends Peca
                     return true;
                 } else {
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 }
             }
         } else {
             mover(origem);
-            mostrarMensagem();
             return false;
         }
     }
@@ -85,7 +80,6 @@ public class Peao extends Peca
                     return deslocamentoPeao(deslocamentoY, origem, destino);
                 }
                 else {
-                    mostrarMensagem();
                     return false;
                 }
             } else if ((deslocamentoX == 0) && (Math.abs(deslocamentoY) == 1)){
@@ -93,7 +87,6 @@ public class Peao extends Peca
                     return deslocamentoPeao(deslocamentoY, origem, destino);
                 }
                 else {
-                    mostrarMensagem();
                     return false;
                 }
             } else if ((Math.abs(deslocamentoX) == 1) && (Math.abs(deslocamentoY) == 1)){
@@ -108,11 +101,9 @@ public class Peao extends Peca
             else if ((Math.abs(deslocamentoX) == 1) && (Math.abs(deslocamentoY) == 1)){
                 return capturaPeao(origem, destino, deslocamentoX, deslocamentoY);
             } else {
-                mostrarMensagem();
                 return false;
             }
         }
-        mostrarMensagem();
         return false;
     }
 

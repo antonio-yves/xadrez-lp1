@@ -32,7 +32,6 @@ public class Torre extends Peca
                         if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
                             mover(tabuleiro.getCasa(origem.getCoordX(), origem.getCoordY()));
-                            mostrarMensagem();
                             return false;
                         }
                         mover(destino);
@@ -42,7 +41,6 @@ public class Torre extends Peca
                     return true;                   
                 }
                 mover(tabuleiro.getCasa(origem.getCoordX(), origem.getCoordY()));
-                mostrarMensagem();
                 return false;
             } else if(destino.getCoordY() < origem.getCoordY()){
                 for(int i = origem.getCoordY() - 1; i > destino.getCoordY(); i--){
@@ -57,7 +55,6 @@ public class Torre extends Peca
                         if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
                             mover(tabuleiro.getCasa(origem.getCoordX(), origem.getCoordY()));
-                            mostrarMensagem();
                             return false;
                         }
                         mover(destino);
@@ -67,7 +64,6 @@ public class Torre extends Peca
                     return true;                   
                 }
                 mover(tabuleiro.getCasa(origem.getCoordX(), origem.getCoordY()));
-                mostrarMensagem();
                 return false;
             }
             
@@ -86,7 +82,6 @@ public class Torre extends Peca
                         if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
                             mover(tabuleiro.getCasa(origem.getCoordX(), origem.getCoordY()));
-                            mostrarMensagem();
                             return false;
                         }
                         mover(destino);
@@ -96,7 +91,6 @@ public class Torre extends Peca
                     return true;                   
                 }
                 mover(tabuleiro.getCasa(origem.getCoordX(), origem.getCoordY()));
-                mostrarMensagem();
                 return false;                
             } else if (destino.getCoordX() < origem.getCoordX()){
                 for(int i = origem.getCoordX() - 1; i > destino.getCoordX(); i--){
@@ -111,7 +105,6 @@ public class Torre extends Peca
                         if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
                             mover(tabuleiro.getCasa(origem.getCoordX(), origem.getCoordY()));
-                            mostrarMensagem();
                             return false;
                         }
                         mover(destino);
@@ -121,11 +114,9 @@ public class Torre extends Peca
                     return true;                   
                 }
                 mover(tabuleiro.getCasa(origem.getCoordX(), origem.getCoordY()));
-                mostrarMensagem();
                 return false;
             }   
         }
-        mostrarMensagem();
         return false;
     }
 }

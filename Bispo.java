@@ -23,7 +23,6 @@ public class Bispo extends Peca
         int deslocamentoX = destino.getCoordX() - origem.getCoordX();
         int deslocamentoY = destino.getCoordY() - origem.getCoordY();
         if (origem == destino){
-            mostrarMensagem();
             return false;
         } else if (deslocamentoX <= 0 && deslocamentoY >= 0){
             if ((deslocamentoX * -1) == deslocamentoY){
@@ -35,11 +34,9 @@ public class Bispo extends Peca
                         if (casaAux == destino){
                             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             }
                             else {
@@ -55,7 +52,6 @@ public class Bispo extends Peca
                 }
                 if (temPeca != 0){
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 } else {
                     mover(destino);
@@ -72,11 +68,9 @@ public class Bispo extends Peca
                         if (casaAux == destino){
                             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             }
                             else {
@@ -92,7 +86,6 @@ public class Bispo extends Peca
                 }
                 if (temPeca != 0){
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 } else {
                     mover(destino);
@@ -109,11 +102,9 @@ public class Bispo extends Peca
                         if (casaAux == destino){
                             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             }
                             else {
@@ -129,7 +120,6 @@ public class Bispo extends Peca
                 }
                 if (temPeca != 0){
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 } else {
                     mover(destino);
@@ -147,11 +137,9 @@ public class Bispo extends Peca
                         if (casaAux == destino){
                             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             }
                             else {
@@ -167,7 +155,6 @@ public class Bispo extends Peca
                 }
                 if (temPeca != 0){
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 } else {
                     mover(destino);
@@ -175,7 +162,6 @@ public class Bispo extends Peca
                 }
             }
         }
-        mostrarMensagem();
         return false;
     }
 }

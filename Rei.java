@@ -24,11 +24,9 @@ public class Rei extends Peca
         if (destino.getPeca() != null){
             if (((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)){
                 mover(origem);
-                mostrarMensagem();
                 return false;
             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0)){
                 mover(origem);
-                mostrarMensagem();
                 return false;
             } else {
                 return deslocarRei(origem, destino, deslocamentoX, deslocamentoY);
@@ -53,7 +51,6 @@ public class Rei extends Peca
             return true;
         } else {
             mover(origem);
-            mostrarMensagem();
             return false;
         }
     }

@@ -8,6 +8,7 @@
 public class Jogo {
 
     private Tabuleiro tabuleiro;
+    private int turno = 0;
 
     public Jogo() {
         tabuleiro = new Tabuleiro();
@@ -117,6 +118,19 @@ public class Jogo {
         Casa casaPeaoPreto8 = tabuleiro.getCasa(7, 6);
         Peca pecaPeaoPreto8 = new Peao(casaPeaoPreto8, Peca.PEAO_PRETO);
     }
+
+    /**
+    * Muda o turno do jogo
+    * Quando o turno for igual a zero, é a vez das brancas
+    * Caso contrário, é a vez das pretas
+    */
+    public void mudarTurno(){
+        if (turno == 0){
+            turno = 1;
+        } else {
+            turno = 0;
+        }
+    }
     
     /**
      * Comanda uma Pe�a na posicao (origemX, origemY) fazer um movimento 
@@ -126,56 +140,35 @@ public class Jogo {
      * @param origemY coluna da Casa de origem.
      * @param destinoX linha da Casa de destino.
      * @param destinoY coluna da Casa de destino.
+     * 
+     * @return 1 - Movimento realizado
+     * @return 2 - Movimento inválido
+     * @return 3 - Vez das brancas
+     * @return 4 - Vez das pretas
      */
-    public boolean moverPeca(int origemX, int origemY, int destinoX, int destinoY) {
+    public int moverPeca(int origemX, int origemY, int destinoX, int destinoY) {
         Casa origem = tabuleiro.getCasa(origemX, origemY);
         Casa destino = tabuleiro.getCasa(destinoX, destinoY);
         Peca peca = origem.getPeca();
-        if (peca.getTipo() == Peca.REI_BRANCO || peca.getTipo() == Peca.REI_PRETO){
+        if (turno == 0 && ((peca.getTipo() % 2) == 0)){
             if (peca.moverPeca(origem, destino, tabuleiro)){
-                return true;
+                mudarTurno();
+                return 1;
             } else {
-                return false;
-            }
-        }
-        else if (peca.getTipo() == Peca.PEAO_BRANCO || peca.getTipo() == Peca.PEAO_PRETO) {
+                return 2;
+            }   
+        } else if (turno == 1 && ((peca.getTipo() % 2) != 0)) {
             if (peca.moverPeca(origem, destino, tabuleiro)){
-                return true;
+                mudarTurno();
+                return 1;
             } else {
-                return false;
+                return 2;
             }
-        }
-        else if (peca.getTipo() == Peca.TORRE_BRANCA || peca.getTipo() == Peca.TORRE_PRETA){
-            if (peca.moverPeca(origem, destino, tabuleiro)){
-                return true;
-            } else {
-                return false;
-            }
-        }
-        else if (peca.getTipo() == Peca.BISPO_BRANCO || peca.getTipo() == Peca.BISPO_PRETO){
-            if (peca.moverPeca(origem, destino, tabuleiro)){
-                return true;
-            } else {
-                return false;
-            }
-        }
-        else if (peca.getTipo() == Peca.CAVALO_BRANCO || peca.getTipo() == Peca.CAVALO_PRETO) {
-            if (peca.moverPeca(origem, destino, tabuleiro)){
-                return true;
-            } else {
-                return false;
-            }
-        }
-        else if (peca.getTipo() == Peca.RAINHA_BRANCA || peca.getTipo() == Peca.RAINHA_PRETA){
-            if (peca.moverPeca(origem, destino, tabuleiro)){
-                return true;
-            } else {
-                return false;
-            }
+        } else if (turno == 0 && ((peca.getTipo() % 2) != 0)) {
+            return 3;
         }
         else {
-            peca.mover(destino);
-            return true;
+            return 4;
         }
     }
     

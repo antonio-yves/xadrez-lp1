@@ -20,7 +20,6 @@ public class Rainha extends Peca
      */
     public boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro){
         if (origem == destino){
-            mostrarMensagem();
             return false;
         } else if ((origem.getCoordX() == destino.getCoordX()) || (origem.getCoordY() == destino.getCoordY())){
             if (moverCimaOuLado(origem, destino, tabuleiro)){
@@ -59,7 +58,6 @@ public class Rainha extends Peca
                         if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
                             mover(origem);
-                            mostrarMensagem();
                             return false;
                         }
                         mover(destino);
@@ -69,7 +67,6 @@ public class Rainha extends Peca
                     return true;                   
                 }
                 mover(origem);
-                mostrarMensagem();
                 return false;
             } else if(destino.getCoordY() < origem.getCoordY()){
                 for(int i = origem.getCoordY() - 1; i > destino.getCoordY(); i--){
@@ -84,7 +81,6 @@ public class Rainha extends Peca
                         if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
                             mover(origem);
-                            mostrarMensagem();
                             return false;
                         }
                         mover(destino);
@@ -94,7 +90,6 @@ public class Rainha extends Peca
                     return true;                   
                 }
                 mover(origem);
-                mostrarMensagem();
                 return false;
             }
             
@@ -113,7 +108,6 @@ public class Rainha extends Peca
                         if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
                             mover(origem);
-                            mostrarMensagem();
                             return false;
                         }
                         mover(destino);
@@ -123,7 +117,6 @@ public class Rainha extends Peca
                     return true;                   
                 }
                 mover(origem);
-                mostrarMensagem();
                 return false;                
             } else if (destino.getCoordX() < origem.getCoordX()){
                 for(int i = origem.getCoordX() - 1; i > destino.getCoordX(); i--){
@@ -138,7 +131,6 @@ public class Rainha extends Peca
                         if ((((destino.getPeca().getTipo() % 2) == 0) && ((getTipo() % 2) == 0)) || 
                         (((destino.getPeca().getTipo() % 2) != 0) && ((getTipo() % 2) != 0))){
                             mover(origem);
-                            mostrarMensagem();
                             return false;
                         }
                         mover(destino);
@@ -148,11 +140,9 @@ public class Rainha extends Peca
                     return true;                   
                 }
                 mover(origem);
-                mostrarMensagem();
                 return false;
             }   
         }
-        mostrarMensagem();
         return false;
     }
     
@@ -164,7 +154,6 @@ public class Rainha extends Peca
         int deslocamentoX = destino.getCoordX() - origem.getCoordX();
         int deslocamentoY = destino.getCoordY() - origem.getCoordY();
         if (origem == destino){
-            mostrarMensagem();
             return false;
         } else if (deslocamentoX <= 0 && deslocamentoY >= 0){
             if ((deslocamentoX * -1) == deslocamentoY){
@@ -176,11 +165,9 @@ public class Rainha extends Peca
                         if (casaAux == destino){
                             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             }
                             else {
@@ -196,7 +183,6 @@ public class Rainha extends Peca
                 }
                 if (temPeca != 0){
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 } else {
                     mover(destino);
@@ -213,11 +199,9 @@ public class Rainha extends Peca
                         if (casaAux == destino){
                             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             }
                             else {
@@ -233,7 +217,6 @@ public class Rainha extends Peca
                 }
                 if (temPeca != 0){
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 } else {
                     mover(destino);
@@ -250,11 +233,9 @@ public class Rainha extends Peca
                         if (casaAux == destino){
                             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             }
                             else {
@@ -270,7 +251,6 @@ public class Rainha extends Peca
                 }
                 if (temPeca != 0){
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 } else {
                     mover(destino);
@@ -288,11 +268,9 @@ public class Rainha extends Peca
                         if (casaAux == destino){
                             if (((destino.getPeca().getTipo() % 2) == 0) && ((origem.getPeca().getTipo() % 2) == 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             } else if (((destino.getPeca().getTipo() % 2) != 0) && ((origem.getPeca().getTipo() % 2) != 0)) {
                                 mover(origem);
-                                mostrarMensagem();
                                 return false;
                             }
                             else {
@@ -308,7 +286,6 @@ public class Rainha extends Peca
                 }
                 if (temPeca != 0){
                     mover(origem);
-                    mostrarMensagem();
                     return false;
                 } else {
                     mover(destino);
@@ -316,7 +293,6 @@ public class Rainha extends Peca
                 }
             }
         }
-        mostrarMensagem();
         return false;
     }
 }

@@ -17,7 +17,6 @@ public class JanelaPrincipal extends JFrame {
     private boolean primeiroClique;
     private CasaGUI casaClicadaOrigem;
     private CasaGUI casaClicadaDestino;
-    public int turno = 0;
     
     /**
      * Responde aos cliques realizados no tabuleiro.
@@ -28,21 +27,8 @@ public class JanelaPrincipal extends JFrame {
         if (primeiroClique) {
             if (casaClicada.possuiPeca()) {
                 casaClicadaOrigem = casaClicada;
-                // verifica se a peça selecionada é branca e verifica se é o turno das brancas, se for o movimento pode ser executado
-                if (casaClicadaOrigem.getCorPeca() == 0 && turno == 0){
-                    casaClicadaOrigem.destacar();
-                    primeiroClique = false;
-                }
-                // assim como nas brancas, esse passo verifica se é a vez das pretas e se a peça selecionada foi preta
-                else if (casaClicadaOrigem.getCorPeca() == 1 && turno == 1){
-                    casaClicadaOrigem.destacar();
-                    primeiroClique = false;
-                }
-                // caso seja o turno das brancas e o jogador clique em uma peça preta, ele verá essa mensagem. O mesmo acontece se
-                // for a vez das pretas e o jogador escolher uma peça branca
-                else {
-                    JOptionPane.showMessageDialog(this, "Ainda não é sua vez de jogar.");
-                }                
+                casaClicadaOrigem.destacar();
+                primeiroClique = false;                
             }
             else {
                 // clicou em uma posi�?o inv�lida, ent?o n?o faz nada.
@@ -51,31 +37,25 @@ public class JanelaPrincipal extends JFrame {
         }
         else {
             casaClicadaDestino = casaClicada;
-            if (jogo.moverPeca(casaClicadaOrigem.getPosicaoX(), casaClicadaOrigem.getPosicaoY(),
-                    casaClicadaDestino.getPosicaoX(), casaClicadaDestino.getPosicaoY())){
-                mudarTurno();
+            int valorRetorno = jogo.moverPeca(casaClicadaOrigem.getPosicaoX(), casaClicadaOrigem.getPosicaoY(),
+            casaClicadaDestino.getPosicaoX(), casaClicadaDestino.getPosicaoY());
+            if (valorRetorno == 1){
+            } else if (valorRetorno == 2) {
+                JOptionPane.showMessageDialog(this, "Movimento inválido para a peça selecionada.");
+            } else if (valorRetorno == 3) {
+                JOptionPane.showMessageDialog(this, "Vez das brancas jogarem.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Vez das pretas jogarem.");
             }
             casaClicadaOrigem.atenuar();
             primeiroClique = true;
             atualizar();
+            
         }
     }
     
     public void mostrarMensagem() {
         JOptionPane.showMessageDialog(this, "As peças brancas começam.");
-    }
-    
-    /**
-    * Muda o turno do jogo
-    * Quando o turno for igual a zero, é a vez das brancas
-    * Caso contrário, é a vez das pretas
-    */
-    public void mudarTurno(){
-        if (turno == 0){
-            turno = 1;
-        } else {
-            turno = 0;
-        }
     }
     
 
@@ -123,7 +103,6 @@ public class JanelaPrincipal extends JFrame {
             casaClicadaOrigem.atenuar();
         }               
         jogo = new Jogo();
-        turno = 0;
         atualizar();
     }
 

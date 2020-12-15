@@ -40,11 +40,9 @@ public abstract class Peca {
         casa = destino;
     }
 
-    protected abstract boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro);  
-    
-    public void mostrarMensagem(){
-        JOptionPane.showMessageDialog (null, "Posição inválida para a peça selecionada!");
-    }
+    protected abstract boolean moverPeca(Casa origem, Casa destino, Tabuleiro tabuleiro);
+
+
 
     /**
      * 0 - Torre Branca
