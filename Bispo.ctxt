@@ -5,6 +5,6 @@ comment1.params=casa\ tipo
 comment1.target=Bispo(Casa,\ int)
 comment1.text=\r\n\ Construtor\ para\ objetos\ da\ classe\ Bispo\r\n
 comment2.params=origem\ destino\ tabuleiro
-comment2.target=boolean\ mover(Casa,\ Casa,\ Tabuleiro)
+comment2.target=boolean\ moverPeca(Casa,\ Casa,\ Tabuleiro)
 comment2.text=\r\n\ Realiza\ o\ movimentoo\ do\ Bispo\r\n
 numComments=3

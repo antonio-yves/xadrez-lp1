@@ -61,6 +61,10 @@ public class JanelaPrincipal extends JFrame {
         }
     }
     
+    public void mostrarMensagem() {
+        JOptionPane.showMessageDialog(this, "As peças brancas começam.");
+    }
+    
     /**
     * Muda o turno do jogo
     * Quando o turno for igual a zero, é a vez das brancas
@@ -90,6 +94,7 @@ public class JanelaPrincipal extends JFrame {
         menuNovo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 criarNovoJogo();
+                mostrarMensagem();
             }
         });
 
@@ -104,7 +109,7 @@ public class JanelaPrincipal extends JFrame {
         super.setLocationRelativeTo(null);
         super.setVisible(true);
         super.pack();
-        JOptionPane.showMessageDialog(this, "As peças brancas começam.");
+        mostrarMensagem();
     }
 
     
@@ -118,6 +123,7 @@ public class JanelaPrincipal extends JFrame {
             casaClicadaOrigem.atenuar();
         }               
         jogo = new Jogo();
+        turno = 0;
         atualizar();
     }
 
